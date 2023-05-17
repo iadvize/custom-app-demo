@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head/>
       <body>
-        <script src="https://static.iadvize.com/conversation-panel-app-lib/2.9.0/idzcpa.umd.production.min.js"></script>
+        {/*put the script here*/}
         <Main/>
         <NextScript/>
       </body>
