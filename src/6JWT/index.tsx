@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
-import Singleton from "../designpattern/singleton"
-import { Product,PartialProduct } from "../api/products";
-import { api } from "../consts";
+import Singleton from "./designpattern/singleton"
+import { Product,PartialProduct } from "./api/products";
+import { api } from "./consts";
 const instance = Singleton.getInstance()
 
 async function productAPI(){
@@ -85,8 +85,6 @@ function Profile({back, insertText, insertCard, coffee} : {back : Dispatch<SetSt
     </div>
   </div>
 )
-    
-  
 }
 
 export default function Version7() {
@@ -104,15 +102,21 @@ export default function Version7() {
     discount : false,
     discountAmount : 1
 })
-
+  let triggerData : string[] = []
   useEffect(()=>{
     instance.setVariable((window as any).idzCpa.init({
-      onIntent : handleIntent,
-      onTrigger : handleTrigger
+      /*onIntent : handleIntent,
+      onTrigger : handleTrigger*/
     }))
     if (coffees.length == 0){
-      productAPI().then((res : any)=> {
-        setCoffees(res)
+      productAPI().then((tempCoffees : any)=> {
+        setCoffees(tempCoffees)
+        if (triggerData.length != 0){
+          const product = tempCoffees.findLast((coffee : PartialProduct)=>coffee.name == triggerData[0])
+          if (typeof product != "undefined"){
+            launchProduct(product.id)
+          }
+        }
     })
     }
   })
@@ -199,14 +203,16 @@ export default function Version7() {
     }))
   }
 
-  function handleTrigger(strings : string[]){
-    const product = coffees.findLast((coffee)=>coffee.name == strings[0])
-    if (typeof product != "undefined"){
-      launchProduct(product.id)
+  function handleTrigger(productNames : string[]){
+    if (coffees.length == 0){
+      triggerData = productNames
+    }else{
+      const product = coffees.findLast((coffee)=>coffee.name == productNames[0])
+      if (typeof product != "undefined"){
+        launchProduct(product.id)
+      }
     }
   }
-
-
 
   const listCoffee = coffees.map(coffee=>{
         return(

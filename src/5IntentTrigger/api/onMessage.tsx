@@ -2,26 +2,9 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import Cors from 'cors'
 import { coffees } from './products'
 
-const cors = Cors({
-    methods: ['POST', 'GET', 'HEAD'],
-})
+//const cors
 
-function runMiddleware(
-    req: NextApiRequest,
-    res: NextApiResponse,
-    fn: Function
-  ) {
-    return new Promise((resolve, reject) => {
-      fn(req, res, (result: any) => {
-        if (result instanceof Error) {
-          return reject(result)
-        }
-  
-        return resolve(result)
-      })
-    })
-  }
-
+//function runmiddleware
 
 type Message = {
 	id : string,
@@ -46,9 +29,11 @@ type Commande = {
 }
 
 export default async function handler(req : NextApiRequest,res : NextApiResponse){
-    await runMiddleware(req, res, cors)
+
+    //call middleware
+  
     const commandes : Commande[] = []
-    const messages = req.body.messages
+    const messages = req.body.messages //your messages
     messages.forEach((message : Message) => {
         coffees.forEach(coffee =>{
             if (message.text.includes(coffee.name)){
@@ -60,7 +45,7 @@ export default async function handler(req : NextApiRequest,res : NextApiResponse
                       {
                         "highlight": coffee.name,
                         "intent": {
-                          "key": coffee.name,
+                          "key": coffee.id.toString(),
                           "payload": {
                             any : coffee,
                           }
@@ -72,7 +57,7 @@ export default async function handler(req : NextApiRequest,res : NextApiResponse
               }
         })
     });
-    res.send({
+    /*res.send({
         "commands" : commandes
-      })
+      })*/
 }
