@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
 import { Product,PartialProduct } from "./api/products"
-import { api } from "./consts"
+import { api } from "../consts"
 import Singleton from "./designpattern/singleton"
 
 const instance = Singleton.getInstance()
