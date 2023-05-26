@@ -1,6 +1,10 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
 import { Product,PartialProduct } from "./api/products"
 import { api } from "../consts"
+//Import Slingleton
+
+//create const instance
+
 
 async function productAPI(){
   const res = await fetch(api)
