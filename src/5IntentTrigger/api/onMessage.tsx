@@ -52,13 +52,15 @@ export default async function handler(req : NextApiRequest,res : NextApiResponse
     messages.forEach((message : Message) => { //for every messages
         coffees.forEach(coffee =>{              //for every coffee
           if (message.text.toLowerCase().includes(coffee.name.toLowerCase())){ //if the coffee is in the message
+            const matchIndex = message.text.toLowerCase().indexOf(coffee.name.toLowerCase()); //get the exact way the coffee is in the message
+            const exact = message.text.substring(matchIndex, matchIndex + coffee.name.length);
                 commandes.push(   //add the following commande to commands
                   {
                     "type": "addMessageActions", 
                     "messageId": message.id, //the id of the message
                     "actions": [
                       {
-                        "highlight": coffee.name, //highlight the name of the coffee in the message
+                        "highlight": exact, //highlight the name of the coffee in the message
                         "intent": { 
                           "key": coffee.id.toString(), //the key is the id of the coffee
                           "payload": {
