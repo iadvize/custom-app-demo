@@ -51,7 +51,7 @@ export default async function handler(req : NextApiRequest,res : NextApiResponse
     const messages = req.body.messages 
     messages.forEach((message : Message) => { //for every messages
         coffees.forEach(coffee =>{              //for every coffee
-            if (message.text.includes(coffee.name)){ //if the coffee is in the message
+          if (message.text.toLowerCase().includes(coffee.name.toLowerCase())){ //if the coffee is in the message
                 commandes.push(   //add the following commande to commands
                   {
                     "type": "addMessageActions", 
