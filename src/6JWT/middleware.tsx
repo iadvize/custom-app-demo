@@ -1,5 +1,5 @@
 import { NextResponse,NextRequest } from 'next/server';
-import { secret } from './pages/consts';
+import { secret } from './consts';
 import { jwtVerify } from "jose"
 
 export async function middleware(request: NextRequest) {

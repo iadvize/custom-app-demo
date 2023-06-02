@@ -57,7 +57,7 @@ function Profile({back, insertText, coffee} : {back : Dispatch<SetStateAction<nu
     )
 }
 
-export default function Version4a(){
+export default function Index(){
 
   const [coffees, setCoffees] = useState<Product[]>([])
   const [profile, setProfile] = useState(-1)

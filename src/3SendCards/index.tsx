@@ -64,7 +64,7 @@ function Profile({back, insertText, insertCard, coffee} : {back : Dispatch<SetSt
   )
 }
 
-export default function Example() {
+export default function Index() {
 
   const [coffees, setCoffees] = useState<Product[]>([])
   const [profile, setProfile] = useState(-1)
