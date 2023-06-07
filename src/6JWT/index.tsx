@@ -176,7 +176,7 @@ export default function Index() {
     })
   }
 
-  function insertText(text : string){
+function insertText(text : string){
     instance.getVariable().then((client : any)=>{
       client.insertTextInComposeBox(text)
     })
