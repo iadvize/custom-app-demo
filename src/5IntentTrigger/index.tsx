@@ -112,7 +112,7 @@ export default function Index() {
       productAPI().then((tempCoffees : any)=> {
         setCoffees(tempCoffees)
         if (triggerData.length != 0){
-          const product = tempCoffees.findLast((coffee : PartialProduct)=>coffee.name == triggerData[0])
+          const product = tempCoffees.findLast((coffee : PartialProduct)=>coffee.id.toString() == triggerData[0])
           if (typeof product != "undefined"){
             launchProduct(product.id)
           }
@@ -207,7 +207,8 @@ export default function Index() {
     if (coffees.length == 0){
       triggerData = productNames
     }else{
-      const product = coffees.findLast((coffee)=>coffee.name == productNames[0])
+      console.log(productNames)
+      const product = coffees.findLast((coffee)=>coffee.id.toString() == productNames[0])
       if (typeof product != "undefined"){
         launchProduct(product.id)
       }

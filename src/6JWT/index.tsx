@@ -148,7 +148,7 @@ export default function Index() {
               setCoffees(tempCoffees)
               setGetProductsError([res[1],res[2]])
               if (triggerData.length != 0){
-                const product = tempCoffees.findLast((coffee)=>coffee.name == triggerData[0])
+                const product = tempCoffees.findLast((coffee)=>coffee.id.toString() == triggerData[0])
                 if (typeof product != "undefined"){
                   launchProduct(product.id,newJwt)
                 }
@@ -254,7 +254,7 @@ function insertText(text : string){
     if (coffees.length == 0){
       triggerData = productNames
     }else{
-      const product = coffees.findLast((coffee)=>coffee.name == productNames[0])
+      const product = coffees.findLast((coffee)=>coffee.id.toString() == productNames[0])
       if (typeof product != "undefined"){
         launchProduct(product.id)
       }
