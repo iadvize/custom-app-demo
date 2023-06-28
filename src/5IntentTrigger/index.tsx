@@ -105,8 +105,8 @@ export default function Index() {
   let triggerData : string[] = []
   useEffect(()=>{
     instance.setVariable((window as any).idzCpa.init({
-      onIntent : handleIntent,
-      onTrigger : handleTrigger
+      /*onIntent : handleIntent,
+      onTrigger : handleTrigger*/
     }))
     if (coffees.length == 0){
       productAPI().then((tempCoffees : any)=> {
