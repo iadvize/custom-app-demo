@@ -2,11 +2,13 @@ This is the repository to clone to do the tutorial of the Custom Apps (https://a
 
 You will need Node v14.21.3 
 
-```nvm use XX```
-
 #To install node_modules
 
 ```npm i```
+
+#To install .next
+
+```npm run build```
 
 #To use the right Node version
 
