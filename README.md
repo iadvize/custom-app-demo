@@ -1,5 +1,23 @@
 This is the repository to clone to do the tutorial of the Custom Apps (https://app.gitbook.com/o/JZY4lQs3jDfTFvrnCKnh/s/xzAkCqB4ZW2cEKD9uaMb/technologies/custom-app)
 
+You will need Node v14.21.3 
+
+#To install node_modules
+
+```npm i```
+
+#To install .next
+
+```npm run build```
+
+#To use the right Node version
+
+```nvm use```
+
+#To run the custom app
+
+```npm run dev```
+
 The code is in src/
 
 The framework executes the code in src/pages, you need to rename a folder "pages" to work on it.
